@@ -2,7 +2,7 @@
 
 **Title: "Blockbuster: A Feature-Rich Movie Booking Website Powered by Angular, React, Node, and MongoDB"**
 
-https://omkaarr1.github.io/MookingBookingWebsite/
+https://omkaarr1.github.io/MovieBookingWebsite/
 
 **Introduction:**
 Blockbuster is an advanced movie booking website that revolutionizes the way users book movie tickets. Developed using a modern technology stack including HTML, JS, CSS, AngularJS, jQuery, React, Node, and MongoDB, CineBook provides a seamless and user-friendly experience from account creation to ticket booking and payment. With its intuitive interface and robust backend, CineBook simplifies the movie ticket booking process while offering powerful features and secure data storage.

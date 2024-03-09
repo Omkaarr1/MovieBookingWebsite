@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thankyou for Booking Your Movie</title>
+    <link rel="stylesheet" href="thankyou.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    <div class=content>
+        <div class="wrapper-1">
+            <div class="wrapper-2">
+                <h1>Thank you !</h1>
+                <p>Your Movie has been booked Successfully</p>
+                <button class="go-home">
+                    Go home
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(()=>{
+            $("button").click(()=>
+            {
+                window.open("index.html","_self");
+            });
+        });
+    </script>
+</body>
+
+</html>

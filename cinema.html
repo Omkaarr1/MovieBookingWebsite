@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Movie Ticket Bookings</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 50px;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 80%;
+            max-width: 800px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0px 0px 10px #ddd;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+        }
+
+        td {
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        @media (max-width: 767px) {
+            table {
+                width: 100%;
+            }
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var cinema = [
+                {
+                    "serial_no": 1,
+                    "name": "John Doe",
+                    "no_of_tickets_booked": 2,
+                    "seat_no": ["A1", "A2"],
+                    "date": "2023-04-01",
+                    "time": "19:30",
+                    "movie_name": "Avengers: Endgame"
+                },
+                {
+                    "serial_no": 2,
+                    "name": "Jane Smith",
+                    "no_of_tickets_booked": 3,
+                    "seat_no": ["B2", "B3", "B4"],
+                    "date": "2023-04-02",
+                    "time": "14:00",
+                    "movie_name": "Black Panther"
+                },
+                {
+                    "serial_no": 3,
+                    "name": "Bob Johnson",
+                    "no_of_tickets_booked": 1,
+                    "seat_no": ["C5"],
+                    "date": "2023-04-03",
+                    "time": "17:45",
+                    "movie_name": "The Dark Knight"
+                },
+                {
+                    "serial_no": 4,
+                    "name": "Alice Lee",
+                    "no_of_tickets_booked": 2,
+                    "seat_no": ["D1", "D2"],
+                    "date": "2023-04-04",
+                    "time": "20:15",
+                    "movie_name": "Inception"
+                },
+                {
+                    "serial_no": 5,
+                    "name": "Samuel Kim",
+                    "no_of_tickets_booked": 3,
+                    "seat_no": ["E3", "E4", "E5"],
+                    "date": "2023-04-05",
+                    "time": "13:30",
+                    "movie_name": "The Lion King"
+                },
+                {
+                    "serial_no": 6,
+                    "name": "Emily Park",
+                    "no_of_tickets_booked": 1,
+                    "seat_no": ["F7"],
+                    "date": "2023-04-06",
+                    "time": "16:45",
+                    "movie_name": "Toy Story"
+                },
+                {
+                    "serial_no": 7,
+                    "name": "Michael Chen",
+                    "no_of_tickets_booked": 2,
+                    "seat_no": ["G1", "G2"],
+                    "date": "2023-04-07",
+                    "time": "19:00",
+                    "movie_name": "Harry Potter and the Sorcerer's Stone"
+                },
+                {
+                    "serial_no": 8,
+                    "name": "Olivia Kim",
+                    "no_of_tickets_booked": 3,
+                    "seat_no": ["H2", "H3", "H4"],
+                    "date": "2023-04-08",
+                    "time": "14:15",
+                    "movie_name": "The Avengers"
+                },
+                {
+                    "serial_no": 9,
+                    "name": "Daniel Lee",
+                    "no_of_tickets_booked": 1,
+                    "seat_no": ["I6"],
+                    "date": "2023-04-09",
+                    "time": "17:30",
+                    "movie_name": "Star Wars: Episode IV - A New Hope"
+                },
+                {
+                    "serial_no": 10,
+                    "name": "Sophia Park",
+                    "no_of_tickets_booked": 2,
+                    "seat_no": ["J1", "J2"],
+                    "date": "2023-04-10",
+                    "time": "20:45",
+                    "movie_name": "Jurassic Park"
+                },
+                {
+                    "serial_no": 11,
+                    "name": "William Lee",
+                    "no_of_tickets_booked": 3,
+                    "seat_no": ["K3", "K4", "K5"],
+                    "date": "2023-04-11",
+                    "time": "13:00",
+                    "movie_name": "The Matrix"
+                },
+                {
+                    "serial_no": 12,
+                    "name": "Emma Kim",
+                    "no_of_tickets_booked": 1,
+                    "seat_no": ["L8"],
+                    "date": "2023-04-12",
+                    "time": "16:15",
+                    "movie_name": "Forrest Gump"
+                },
+                {
+                    "serial_no": 13,
+                    "name": "David Park",
+                    "no_of_tickets_booked": 2,
+                    "seat_no": ["M1", "M2"],
+                    "date": "2023-04-13",
+                    "time": "18:30",
+                    "movie_name": "Pulp Fiction"
+                },
+                {
+                    "serial_no": 14,
+                    "name": "Sophie Lee",
+                    "no_of_tickets_booked": 3,
+                    "seat_no": ["N2", "N3", "N4"],
+                    "date": "2023-04-14",
+                    "time": "15:45",
+                    "movie_name": "Forrest Gump"
+                },
+                {
+                    "serial_no": 15,
+                    "name": "Jacob Kim",
+                    "no_of_tickets_booked": 1,
+                    "seat_no": ["O6"],
+                    "date": "2023-04-15",
+                    "time": "19:00",
+                    "movie_name": "The Godfather"
+                },
+                {
+                    "serial_no": 16,
+                    "name": "Grace Park",
+                    "no_of_tickets_booked": 2,
+                    "seat_no": ["P1", "P2"],
+                    "date": "2023-04-16",
+                    "time": "14:15",
+                    "movie_name": "The Shawshank Redemption"
+                },
+                {
+                    "serial_no": 17,
+                    "name": "Ethan Lee",
+                    "no_of_tickets_booked": 3,
+                    "seat_no": ["Q2", "Q3", "Q4"],
+                    "date": "2023-04-17",
+                    "time": "17:30",
+                    "movie_name": "Fight Club"
+                },
+                {
+                    "serial_no": 18,
+                    "name": "Ava Kim",
+                    "no_of_tickets_booked": 1,
+                    "seat_no": ["R7"],
+                    "date": "2023-04-18",
+                    "time": "20:45",
+                    "movie_name": "The Silence of the Lambs"
+                },
+                {
+                    "serial_no": 19,
+                    "name": "Ryan Park",
+                    "no_of_tickets_booked": 2,
+                    "seat_no": ["S1", "S2"],
+                    "date": "2023-04-19",
+                    "time": "13:00",
+                    "movie_name": "The Lord of the Rings: The Fellowship of the Ring"
+                },
+                {
+                    "serial_no": 20,
+                    "name": "Isabella Lee",
+                    "no_of_tickets_booked": 3,
+                    "seat_no": ["T2", "T3", "T4"],
+                    "date": "2023-04-19",
+                    "time": "16:15",
+                    "movie_name": "Titanic"
+                }
+            ];
+            $.each(cinema, function (index, item) {
+                var row = $('<tr>').appendTo('#movie-tickets');
+                $('<td>').text(item.serial_no).appendTo(row);
+                $('<td>').text(item.name).appendTo(row);
+                $('<td>').text(item.no_of_tickets_booked).appendTo(row);
+                $('<td>').text(item.seat_no).appendTo(row);
+                $('<td>').text(item.time).appendTo(row);
+                $('<td>').text(item.movie_name).appendTo(row);
+                $('<td>').text(item.date).appendTo(row);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Movie Ticket Bookings</h1>
+    <table id="movie-tickets">
+        <thead>
+            <tr>
+                <th>Serial No.</th>
+                <th>Name</th>
+                <th>No. of Tickets Booked</th>
+                <th>Seat No.</th>
+                <th>Time</th>
+                <th>Movie Name</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</body>
+
+</html>
